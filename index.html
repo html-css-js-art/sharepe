@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Primary Meta Tags -->
+	<title>Sharepe | UPI LINK Generator</title>
+	<meta name="title" content="sharepe | UPI LINK Generator">
+	<meta name="description" content="sharepe | UPI LINK Generator - https://github.com/PtPrashantTripathi/sharepe">
+	<link rel="fluid-icon" href="https://raw.githubusercontent.com/PtPrashantTripathi/sharepe/main/img/sharepe.png"
+		title="PtPrashantTripathi | sharepe" />
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://ptprashanttripathi.github.io/sharepe">
+	<meta property="og:title" content="sharepe | UPI LINK Generator">
+	<meta property="og:description"
+		content="sharepe | UPI LINK Generator - https://github.com/PtPrashantTripathi/sharepe">
+	<meta property="og:image" content="https://raw.githubusercontent.com/PtPrashantTripathi/sharepe/main/img/sharepe.png">
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://ptprashanttripathi.github.io/sharepe">
+	<meta property="twitter:title" content="sharepe | UPI LINK Generator">
+	<meta property="twitter:description"
+		content="sharepe | UPI LINK Generator - https://github.com/PtPrashantTripathi/sharepe">
+	<meta property="twitter:image"
+		content="https://raw.githubusercontent.com/PtPrashantTripathi/sharepe/main/img/sharepe.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/main.css">
+
+<body>
+	<center>
+		<div class="card">
+			<div class="card-content">
+				<a href="sharepe.html?new"><img src="img/logo.png" height="50"></a>
+				<h5 id="name" style="color: #101010;">
+					</h4>
+					<canvas id="qr"></canvas>
+					<div style="margin-top: 2px;">
+						<a id="sharepe">
+							<img src="img/upi.png" height="80">
+							<br>
+							<button class='btn'>Click here to Pay Now</button>
+						</a>
+					</div>
+					<br>
+					<a href="sharepe.html?new" style="color: #777;">Click here to create your own payment link</a>
+					<br>
+					<p style="color: #555">
+						<b>Developed BY : </b>
+						<a href="https://ptprashanttripathi.github.io" style="color: #999;"> Dev Saurabh</a><img src="https://visitor-badge.vercel.app/page/sharepe?color=Blue" />
+
+					</p>
+			</div>
+		</div>
+	</center>
+	<script src="qrious/qrious.min.js"></script>
+	<script>
+		if (window.location.search.indexOf('pa') > -1) {
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString);
+			const pn = urlParams.get('pn');
+			const pa = urlParams.get('pa');
+			var user;
+			if (pn !== "") user = pn;
+			else user = pa;
+			const url = 'upi://pay' + queryString;
+			document.getElementById("name").innerHTML = "Click on PayNow or Scan Qr and Pay using any UPI Apps To Pay <br>" + user;
+			document.getElementById("sharepe").href = url;
+			(function () {
+				var qr = new QRious({
+					element: document.getElementById('qr'),
+					background: '#fff',
+					foreground: '#000',
+					size: 200,
+					level: 'H',
+					value: url
+				});
+			})();
+		} else {
+			location.replace("sharepe.html?error");
+		}
+	</script>
+</body>
+
+</html>
